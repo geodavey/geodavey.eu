@@ -16,7 +16,7 @@ export default Vue.extend({});
 <style>
 .fade-in {
   animation: 5s appear;
-  animation-delay: 0.5s;
+  animation-delay: 2s;
   margin: auto;
 }
 @keyframes appear {
