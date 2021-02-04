@@ -76,7 +76,7 @@ export default {
     const proj = geoOrthographic()
       .scale(width / 2 - this.$data.ringWidth * 2)
       .translate([width / 2, width / 2])
-      .rotate([this.$data.xOffset, this.$data.vTilt, this.$data.hTilt]);
+      .rotate([this.$data.land.xOffset, this.$data.land.vTilt, this.$data.land.hTilt]);
 
     const path = geoPath().projection(proj);
 
