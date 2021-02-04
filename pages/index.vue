@@ -1,7 +1,7 @@
 <template>
   <div class="container" :class="{ preloaded: preloaded === true }">
     <div class="fade-in">
-      <Logo width="300" />
+      <Logo width=300 />
       <Graticule />
     </div>
   </div>
