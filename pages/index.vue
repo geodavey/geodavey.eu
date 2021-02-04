@@ -1,28 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
-      <h1 class="title">
-        geodavey.eu
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <Logo width=300 />
     </div>
   </div>
 </template>
@@ -39,6 +18,9 @@ export default Vue.extend({})
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
+body {
+  background: #fff;
+  }
 .container {
   margin: 0 auto;
   min-height: 100vh;

@@ -14,7 +14,11 @@
     "@nuxt/content": "^1.11.1",
     "@nuxt/typescript-runtime": "^2.0.1",
     "core-js": "^3.8.3",
-    "nuxt": "^2.14.12"
+    "d3-geo": "^2.0.1",
+    "d3-selection": "^2.0.0",
+    "d3-timer": "^2.0.0",
+    "nuxt": "^2.14.12",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
