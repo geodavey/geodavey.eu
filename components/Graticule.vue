@@ -15,16 +15,16 @@ export default {
   },
   mounted() {
     const svg = select(this.$el)
-      .attr("width", this.data.nativeWidth)
-      .attr("height", this.data.nativeWidth)
+      .attr("width", this.$data.nativeWidth)
+      .attr("height", this.$data.nativeWidth)
       .attr(
         "viewBox",
-        `0 0 ${this.data.nativeWidth} ${this.data.nativeWidth}`
+        `0 0 ${this.$data.nativeWidth} ${this.$data.nativeWidth}`
       );
 
     const proj = geoTransverseMercator()
-      .scale(this.data.nativeWidth / 2)
-      .translate([this.data.nativeWidth / 2, this.data.nativeWidth / 2])
+      .scale(this.$data.nativeWidth / 2)
+      .translate([this.$data.nativeWidth / 2, this.$data.nativeWidth / 2])
       .center([0, 90])
       .rotate([0, 0, 0]);
 

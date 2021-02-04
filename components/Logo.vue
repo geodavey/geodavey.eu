@@ -66,7 +66,7 @@ export default {
   },
 
   mounted() {
-    const width = this.data.nativeWidth;
+    const width = this.$data.nativeWidth;
 
     const svg = select(this.$el)
       .attr('width', this.$props.width)
@@ -74,9 +74,9 @@ export default {
       .attr('viewBox', `0 0 ${width} ${width}`);
 
     const proj = geoOrthographic()
-      .scale(width / 2 - this.data.ringWidth * 2)
+      .scale(width / 2 - this.$data.ringWidth * 2)
       .translate([width / 2, width / 2])
-      .rotate([this.data.xOffset, this.data.vTilt, this.data.hTilt]);
+      .rotate([this.$data.xOffset, this.$data.vTilt, this.$data.hTilt]);
 
     const path = geoPath().projection(proj);
 
@@ -86,23 +86,23 @@ export default {
       .attr('cx', width / 2)
       .attr('cy', width / 2)
       .attr('r', width / 2)
-      .style('fill', this.data.colors.outerRing);
+      .style('fill', this.$data.colors.outerRing);
 
     // inner ring
     svg
       .append('circle')
       .attr('cx', width / 2)
       .attr('cy', width / 2)
-      .attr('r', width / 2 - this.data.ringWidth)
-      .style('fill', this.data.colors.innerRing);
+      .attr('r', width / 2 - this.$data.ringWidth)
+      .style('fill', this.$data.colors.innerRing);
 
     // water
     svg
       .append('circle')
       .attr('cx', width / 2)
       .attr('cy', width / 2)
-      .attr('r', width / 2 - this.data.ringWidth * 2)
-      .style('fill', this.data.colors.water);
+      .attr('r', width / 2 - this.$data.ringWidth * 2)
+      .style('fill', this.$data.colors.water);
 
     // land
     const landFt = feature(landTopo, landTopo.objects.land).features;
@@ -114,7 +114,7 @@ export default {
       .append('path')
       .attr('class', 'land rotate')
       .attr('d', path)
-      .style('fill', this.data.colors.land)
+      .style('fill', this.$data.colors.land)
       .style('opacity', '1');
 
     // silhouette clip path
@@ -128,36 +128,36 @@ export default {
       .attr('r', width / 2);
 
     // silhouette
-    const silW = this.data.silhouette.width * this.data.silhouette.scale;
-    const silH = this.data.silhouette.height * this.data.silhouette.scale;
+    const silW = this.$data.silhouette.width * this.$data.silhouette.scale;
+    const silH = this.$data.silhouette.height * this.$data.silhouette.scale;
 
     const silTransform = `translate(${width / 2 - silW / 2} ${width -
-      silH}) scale(${this.data.silhouette.scale})`;
+      silH}) scale(${this.$data.silhouette.scale})`;
 
     svg
       .append('g')
       .attr('clip-path', 'url(#outerClip)')
       .append('path')
-      .attr('d', this.data.silhouette.silhouettePath)
+      .attr('d', this.$data.silhouette.silhouettePath)
       .attr('transform', silTransform)
-      .style('fill', this.data.colors.silhouette);
+      .style('fill', this.$data.colors.silhouette);
 
     // bandana
     svg
       .append('path')
-      .attr('d', this.data.silhouette.bandanaPath)
+      .attr('d', this.$data.silhouette.bandanaPath)
       .attr('transform', silTransform)
-      .style('fill', this.data.colors.bandana);
+      .style('fill', this.$data.colors.bandana);
 
     // globe rotation
     this.rotation = interval(elapsed => {
       proj.rotate([
-        -this.data.animation.speed * elapsed + this.data.land.xOffset,
-        this.data.land.vTilt,
-        this.data.land.hTilt
+        -this.$data.animation.speed * elapsed + this.$data.land.xOffset,
+        this.$data.land.vTilt,
+        this.$data.land.hTilt
       ]);
       svg.select('.rotate').attr('d', path);
-    }, 1000 / this.data.animation.fps);
+    }, 1000 / this.$data.animation.fps);
   }
 };
 </script>
