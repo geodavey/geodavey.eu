@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" :class="{ preloaded: preloaded === true }">
     <div class="fade-in">
       <Logo width="300" />
       <Graticule />
@@ -10,30 +10,48 @@
 <script lang="ts">
 import Vue from "vue";
 
-export default Vue.extend({});
+export default Vue.extend({
+  data() {
+    return {
+      preloaded: false
+    };
+  },
+  mounted() {
+    this.$data.preloaded = true;
+  }
+});
 </script>
 
-<style>
-.fade-in {
-  animation: 5s appear;
-  animation-delay: 2s;
-  margin: auto;
-}
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-}
+<style lang="scss">
 body {
   background: #fff;
   font-family: verdana, tahoma, sans-serif;
 }
 .container {
+  transition: opacity 3s fade-in;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  &.preloaded {
+    opacity: 1;
+
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2s;
+  }
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
