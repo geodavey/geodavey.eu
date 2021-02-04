@@ -76,7 +76,11 @@ export default {
     const proj = geoOrthographic()
       .scale(width / 2 - this.$data.ringWidth * 2)
       .translate([width / 2, width / 2])
-      .rotate([this.$data.land.xOffset, this.$data.land.vTilt, this.$data.land.hTilt]);
+      .rotate([
+        this.$data.land.xOffset,
+        this.$data.land.vTilt,
+        this.$data.land.hTilt
+      ]);
 
     const path = geoPath().projection(proj);
 
@@ -148,6 +152,59 @@ export default {
       .attr('d', this.$data.silhouette.bandanaPath)
       .attr('transform', silTransform)
       .style('fill', this.$data.colors.bandana);
+
+    // welcome
+
+    svg
+      .append('path')
+      .attr('d', 'M 250 0 a 220 220 0 1 0 0.0001 0')
+      .attr('fill', 'transparent')
+      .attr('id', 'textRing0');
+
+    svg
+      .append('text')
+      .append('textPath') //append a textPath to the text element
+      .attr('xlink:href', '#textRing0') //place the ID of the path here
+      .attr('startOffset', '53%')
+      .attr('side', 'right')
+      .style('text-anchor', 'middle') //place the text halfway on the arc
+      .attr('fill', '#fff')
+      .text('❤ ❤ ❤');
+
+    // website
+    svg
+      .append('path')
+      .attr('d', 'M 250 0 a 234 234 0 1 0 0.0001 0')
+      .attr('fill', 'transparent')
+      .attr('id', 'textRing1');
+
+    svg
+      .append('text')
+      .append('textPath') //append a textPath to the text element
+      .attr('xlink:href', '#textRing1') //place the ID of the path here
+      .attr('startOffset', '48%')
+      .attr('side', 'right')
+      .style('font-size', '28px')
+      .style('text-anchor', 'start') //place the text halfway on the arc
+      .attr('fill', '#fff')
+      .text('website');
+
+    // under construction
+    svg
+      .append('path')
+      .attr('d', 'M 250 0 a 245 245 0 1 0 0.0001 0')
+      .attr('fill', 'transparent')
+      .attr('id', 'textRing2');
+
+    svg
+      .append('text')
+      .append('textPath') //append a textPath to the text element
+      .attr('xlink:href', '#textRing2') //place the ID of the path here
+      .attr('startOffset', '46%')
+      .attr('side', 'right')
+      .style('text-anchor', 'start') //place the text halfway on the arc
+      .attr('fill', '#fff')
+      .text('under construction :)');
 
     // globe rotation
     this.rotation = interval(elapsed => {
