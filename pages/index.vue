@@ -25,7 +25,7 @@ export default Vue.extend({
 <style lang="scss">
 body,
 html,
-div#__nuxt,
+#__nuxt,
 #__layout,
 #__layout > div {
   height: 100%;
@@ -34,7 +34,7 @@ div#__nuxt,
 
 body {
   background: #fff;
-  font-family: verdana, tahoma, sans-serif;
+  font-family: verdana, tahoma, sans-serif !important;
   height: 100%;
 }
 .container {
