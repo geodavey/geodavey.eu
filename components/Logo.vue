@@ -163,12 +163,14 @@ export default {
 
     svg
       .append('text')
-      .append('textPath') //append a textPath to the text element
-      .attr('xlink:href', '#textRing0') //place the ID of the path here
+      .append('textPath')
+      .attr('xlink:href', '#textRing0')
       .attr('startOffset', '53%')
-      .style('text-anchor', 'middle') //place the text halfway on the arc
+      .style('font-family', 'monospace')
+      .style('font-size', '20px')
+      .style('text-anchor', 'middle')
       .attr('fill', '#fff')
-      .html('❤&#xFE0E; ❤&#xFE0E; ❤&#xFE0E;');
+      .html('❤ ❤');
 
     // website
     svg
@@ -179,11 +181,11 @@ export default {
 
     svg
       .append('text')
-      .append('textPath') //append a textPath to the text element
-      .attr('xlink:href', '#textRing1') //place the ID of the path here
+      .append('textPath')
+      .attr('xlink:href', '#textRing1')
       .attr('startOffset', '48%')
       .style('font-size', '28px')
-      .style('text-anchor', 'start') //place the text halfway on the arc
+      .style('text-anchor', 'start')
       .attr('fill', '#fff')
       .text('website');
 
@@ -196,10 +198,10 @@ export default {
 
     svg
       .append('text')
-      .append('textPath') //append a textPath to the text element
-      .attr('xlink:href', '#textRing2') //place the ID of the path here
+      .append('textPath')
+      .attr('xlink:href', '#textRing2')
       .attr('startOffset', '46%')
-      .style('text-anchor', 'start') //place the text halfway on the arc
+      .style('text-anchor', 'start')
       .attr('fill', '#fff')
       .text('under construction :)');
 
