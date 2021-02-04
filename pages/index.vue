@@ -1,7 +1,7 @@
 <template>
   <div class="container" :class="{ preloaded: preloaded === true }">
     <div class="fade-in">
-      <Logo width=300 />
+      <Logo width="300" />
       <Graticule />
     </div>
   </div>
@@ -23,11 +23,22 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+body,
+html,
+div#__nuxt,
+#__layout,
+#__layout > div {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background: #fff;
   font-family: verdana, tahoma, sans-serif;
+  height: 100%;
 }
 .container {
+  height: 100%;
   transition: opacity 3s fade-in;
   margin: 0 auto;
   display: flex;
