@@ -1,27 +1,24 @@
 <template>
-  <svg
-    class="graticule-bg"
-    xmlns="http://www.w3.org/2000/svg"
-  ></svg>
+  <svg class="graticule-bg" xmlns="http://www.w3.org/2000/svg"></svg>
 </template>
 
 <script lang="ts">
-import { geoPath, geoTransverseMercator, geoGraticule } from 'd3-geo';
-import { interval } from 'd3-timer';
-import { select } from 'd3-selection';
+import { geoPath, geoTransverseMercator, geoGraticule } from "d3-geo";
+import { interval } from "d3-timer";
+import { select } from "d3-selection";
 
 export default {
-  data () {
+  data() {
     return {
       nativeWidth: 4096
     };
   },
-  mounted () {
+  mounted() {
     const svg = select(this.$el)
-      .attr('width', this.$data.nativeWidth)
-      .attr('height', this.$data.nativeWidth)
+      .attr("width", this.$data.nativeWidth)
+      .attr("height", this.$data.nativeWidth)
       .attr(
-        'viewBox',
+        "viewBox",
         `0 0 ${this.$data.nativeWidth} ${this.$data.nativeWidth}`
       );
 
@@ -35,13 +32,19 @@ export default {
     const graticule = geoGraticule().step([12, 15]);
 
     svg
-      .append('path')
+      .append("path")
       .datum(graticule)
-      .attr('class', 'graticule')
-      .attr('d', path)
-      .style('fill', 'none')
-      .style('stroke', 'rgba(0,0,0,0.3)')
-      .attr('stroke-width', '2px');
+      .attr("class", "graticule rotate")
+      .attr("d", path)
+      .style("fill", "none")
+      .style("stroke", "rgba(0,0,0,0.3)")
+      .attr("stroke-width", "2px");
+
+    // globe rotation
+    this.rotation = interval(elapsed => {
+      proj.rotate([elapsed * -0.002, 0, 0]);
+      svg.select(".rotate").attr("d", path);
+    }, 1000 / 20);
   }
 };
 </script>
